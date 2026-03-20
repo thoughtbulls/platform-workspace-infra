@@ -29,7 +29,7 @@ module "iam" {
   source = "../../modules/iam"
 
   environment = var.environment
-  region = var.region
+  region      = var.region
 
   databricks_account_id       = var.databricks_account_id
   databricks_account_root_arn = var.databricks_account_root_arn
@@ -59,4 +59,9 @@ module "databricks_workspace" {
 
 }
 
+module "metastore_assignment" {
+  source = "../../modules/metastore-assignment"
 
+  workspace_id = local.workspace_id
+  metastore_id = local.metastore_id
+}
